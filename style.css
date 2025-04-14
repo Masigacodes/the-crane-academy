@@ -1,67 +1,194 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset & Base */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f6f8;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f0f8ff, #e6f2ff);
     color: #333;
-}
-
-header {
-    background-color: #004d99;
+    line-height: 1.6;
+  }
+  
+  /* Navigation */
+  nav {
+    background: #004d99;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideDown 0.7s ease-in-out;
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  nav a {
     color: white;
-    padding: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+  }
+  
+  /* Header */
+  header {
+    background: linear-gradient(to right, #004d99, #0073e6);
+    color: white;
+    padding: 40px 20px;
     text-align: center;
-}
-
-.slideshow-container {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  header h1 {
+    font-size: 3em;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    animation: slideIn 1s ease-in-out;
+  }
+  
+  header p {
+    font-size: 1.3em;
+    font-style: italic;
+    color: #f0e68c;
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Slideshow */
+  .slideshow-container {
     position: relative;
-    max-width: 100%;
-    margin: auto;
-    margin-top: 20px;
-}
-
-.slide {
+    max-width: 1000px;
+    margin: 30px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .slide {
     display: none;
     position: relative;
-}
-
-.slide img {
+    animation: fade 1s ease-in-out;
+  }
+  
+  @keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+  }
+  
+  .slide img {
     width: 100%;
     height: auto;
-}
-
-.caption {
+    display: block;
+  }
+  
+  .caption {
     position: absolute;
     left: 20px;
     bottom: 20px;
     color: white;
-    font-size: 1.5em;
-    background-color: rgba(0,0,0,0.5);
-    padding: 10px;
-}
-
-/* Section Styling */
-section {
+    font-size: 2em;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    animation: captionPop 0.8s ease-in-out;
+  }
+  
+  @keyframes captionPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Sections */
+  section {
+    padding: 50px 20px;
+    max-width: 960px;
+    margin: 30px auto;
     background-color: white;
-    padding: 30px 20px;
-    margin: 20px auto;
-    max-width: 900px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-/* Headings */
-h2 {
-    color: #004d99;
-    border-bottom: 2px solid #004d99;
-    padding-bottom: 10px;
+    border-left: 5px solid #0073e6;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in;
+  }
+  
+  section h2 {
+    font-size: 2.4em;
     margin-bottom: 20px;
-}
-
-footer {
-    background-color: #004d99;
-    color: white;
+    color: #004d99;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  section h3 {
+    color: #0073e6;
+    margin-top: 25px;
+    font-size: 1.4em;
+  }
+  
+  section p {
+    margin-top: 10px;
+    font-size: 1.1em;
+    line-height: 1.8;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #003366;
+    color: #fff;
     text-align: center;
-    padding: 15px;
-    margin-top: 40px;
-}
+    padding: 20px 15px;
+    font-size: 0.95em;
+    border-top: 4px solid #0073e6;
+    animation: fadeIn 2s ease-in;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2em;
+    }
+  
+    .caption {
+      font-size: 1.2em;
+      padding: 8px 12px;
+    }
+  
+    section {
+      padding: 30px 15px;
+    }
+  
+    nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    nav a {
+      font-size: 1em;
+    }
+  }
+  
